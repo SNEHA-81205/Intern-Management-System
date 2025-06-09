@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Title Bar -->
+    <div class="title-bar">
+        <img src="drdo_logo_0.png" alt="DRDO Logo">
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+    <div class="mentor">
+        <h2>Mentor Dashboard</h2>
+    </div>
+    <!-- Mentor Details Section -->
+    <div class="mentor-details">
+        <img src="user.png" alt="Mentor Profile">
+        <div class="mentor-info">
+            <p><strong>ID:</strong> <span id="mentor-id">Loading...</span></p>
+            <p><strong>Name:</strong> <span id="mentor-name">Loading...</span></p>
+            <p><strong>Email:</strong> <span id="mentor-email">Loading...</span></p>
+            <p><strong>Phone:</strong> <span id="mentor-phone">Loading...</span></p>
+        </div>
+    </div>
+
+    <!-- Pending Trainee Requests -->
+    <div class="trainee-requests">
+        <h3>Pending Trainee Requests</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Trainee ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="trainee-requests">
+                <!-- Trainee requests will be inserted dynamically here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

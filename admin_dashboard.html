@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Intern Software</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="title-bar">
+        <img src="drdo_logo_0.png" alt="DRDO Logo">
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>        
+
+    <div class="card-container">
+        <div class="card">
+            <div class="side-bar">
+                <i class="fa-solid fa-bars" id="menu-icon"></i>
+                <h3 class="dashboard">Dashboard</h3>
+            </div>
+        
+            <div class="sidebar-content" id="sidebar-content">
+                <a href="#" class="nav-link" id="admin-link">Admin</a>
+                <a href="#" class="nav-link" id="mentor-link">Mentor</a>
+                <div class="sidebar-content1" id="sidebar-content1">
+                    <a href="#" class="nav-link" id="trainee-link">Trainee</a>
+                    <button id="add-trainee-btn" class="add-trainee-btn" style="display: none;">Add Trainee</button>
+                </div>                
+            </div>
+        </div>
+        <div class="right-panel" id="right-panel">
+            <h2>Welcome, Admin</h2>
+            <p>Select an option from the sidebar.</p>
+        </div>
+    </div>
+    <!-- MODAL: Assign Trainee to Mentor -->
+    <div class="modal hidden" id="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Assign Trainee to Mentor</h3>
+            <form id="trainee-form">
+                <input type="text" id="trainee_id" placeholder="Trainee ID" required />
+                <input type="text" id="trainee_name" placeholder="Trainee Name" required />
+                <input type="email" id="trainee_email" placeholder="Trainee Email" required />
+                <input type="tel" id="trainee_phone" placeholder="Trainee Phone" required />
+                <input type="text" id="mentor_name" readonly />
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+    
+  
+
+    <script src="admin_script.js"></script>
+</body>
+</html>

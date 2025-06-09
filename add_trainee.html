@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Trainee</title>
+    <link rel="stylesheet" href="add_trainee.css">
+</head>
+<body>
+
+    <div class="container">
+        <img src="drdo_logo_0.png" alt="DRDO Logo" class="logo">
+        <h2>Add New Trainee</h2>
+        <form id="trainee-form">
+
+            <label for="name">Trainee Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="status">Internship Status:</label>
+            <select id="status" name="status" required>
+                <option value="pending">Pending</option>
+                <option value="ongoing">Ongoing</option>
+                <option value="completed">Completed</option>
+            </select>
+
+            <label for="mentor">Assign Mentor (ID):</label>
+            <select id="mentor" name="mentor" required>
+                <option value="1">John Doe</option>
+                <option value="2">Sourabh</option>
+                <option value="3">Lovely Gupta</option>
+                <option value="4">Meher</option>
+                <option value="5">Krishna</option>
+            </select>
+              
+
+            <button type="submit">Add Trainee</button>
+        </form>
+
+        <p id="response-message"></p>
+    </div>
+
+    <script>
+        document.getElementById("trainee-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const traineeData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                internship_status: document.getElementById("status").value,
+                mentor_id: parseInt(document.getElementById("mentor").value)
+            };
+
+            try {
+                const response = await fetch("http://localhost:3000/add_trainee", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(traineeData)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    document.getElementById("response-message").textContent = "✅ " + data.message;
+                    document.getElementById("response-message").style.color = "green";
+                    document.getElementById("trainee-form").reset();
+                } else {
+                    document.getElementById("response-message").textContent = "❌ " + (data.error || "Failed to add trainee.");
+                    document.getElementById("response-message").style.color = "red";
+                }
+            } catch (error) {
+                document.getElementById("response-message").textContent = "⚠ Error: Unable to connect to server.";
+                document.getElementById("response-message").style.color = "orange";
+            }
+        });
+    </script>
+
+</body>
+</html>
